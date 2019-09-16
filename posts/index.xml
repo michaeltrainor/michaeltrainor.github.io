@@ -16,8 +16,17 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://michaeltrainor.com/posts/post_0001/</guid>
-      <description>Here I am.
-After more than a decade serving various roles in numerous game development studios, technology companies, and flight simulation vendors, I find myself living in the most southern capital city on the planet&amp;hellip;making movies, but not quite. I write software and develop pipeline architecture for data. In this case, it&amp;rsquo;s heaps of simluations, art content, video, and blah blah blah. It&amp;rsquo;s my day job, and I love it.</description>
+      <description>&lt;p&gt;Here I am.&lt;/p&gt;
+
+&lt;p&gt;After more than a decade serving various roles in numerous game development studios, technology companies, and flight simulation vendors, I find myself living in the most southern capital city on the planet&amp;hellip;making movies, but not quite. I write software and develop pipeline architecture for data. In this case, it&amp;rsquo;s heaps of simluations, art content, video, and blah blah blah. It&amp;rsquo;s my day job, and I love it.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve recently adopted Go (golang) as my language of choice. Most of my professional coding experience has been programming using Python and a bit of C++ and Go is a refreshing balance of both, imho. I&amp;rsquo;m finding this UDemy course extremly helpful as I learn. Check it out&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Go: The Complete Developer&amp;rsquo;s Guide &lt;a href=&#34;https://www.udemy.com/go-the-complete-developers-guide/&#34;&gt;https://www.udemy.com/go-the-complete-developers-guide/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I don&amp;rsquo;t spend much time blogging or posting my personal projects, but I think it&amp;rsquo;s time I started at least sharing&amp;hellip;even if it&amp;rsquo;s for my own benefit.&lt;/p&gt;
+
+&lt;p&gt;See, I have no discipline when it comes to completing my personal projects. I never finish anything that I&amp;rsquo;m not getting paid to do. It&amp;rsquo;s been quite frustrating. I spend quite alot of my free time digging into tutorials, UDemy courses, and  generally tinkering with whatever software I can get my hands on. I recently dropped some hard earned cash on my own licenses for SideFX Houdini and a Unity. I figured if I commit to sharing my resources and progress, I&amp;rsquo;ll end up with some complete projects down the line.&lt;/p&gt;</description>
     </item>
     
   </channel>
