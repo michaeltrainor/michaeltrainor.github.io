@@ -17,9 +17,7 @@
       <pubDate>Sun, 13 Oct 2019 23:20:27 +1300</pubDate>
       
       <guid>https://www.michaeltrainor.com/posts/post-001-github-card/</guid>
-      <description>Get the source code git clone git@github.com:michaeltrainor/sample_mtnodes.git  Requirements: Python 3.7.5+
-Steps to run the sample: from the root folder of the project run&amp;hellip;
-python -m mtnodes  Purpose: The following code sample demonstrates a very basic graph evaluation. Documention is provided where necessary. I only documented the sample where I felt it would help guide you through the process. Any undocumented methods or classes are most certianly basic structures or instance properties.</description>
+      <description>A basic node graph with some computed examples. Written to try Python 3.7+ dataclass objects. Clone it, run it, and enjoy. Thanks!</description>
     </item>
     
   </channel>
