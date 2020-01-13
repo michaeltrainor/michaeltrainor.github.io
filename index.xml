@@ -6,9 +6,22 @@
     <description>Recent content on Michael Trainor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sun, 13 Oct 2019 23:20:27 +1300</lastBuildDate>
     
 	<atom:link href="https://www.michaeltrainor.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MTNodes Sample Project</title>
+      <link>https://www.michaeltrainor.com/posts/post-001-github-card/</link>
+      <pubDate>Sun, 13 Oct 2019 23:20:27 +1300</pubDate>
+      
+      <guid>https://www.michaeltrainor.com/posts/post-001-github-card/</guid>
+      <description>Michael Trainor&#39;s Nodes Sample Requirements: Python 3.7.5+
+Steps to run the sample: from the root folder of the project run&amp;hellip;
+python -m mtnodes  Purpose: The following code sample demonstrates a very basic graph evaluation. Documention is provided where necessary. I only documented the sample where I felt it would help guide you through the process. Any undocumented methods or classes are most certianly basic structures or instance properties.
+Structure: You will find an mtnodes package module (__main__.</description>
+    </item>
     
   </channel>
 </rss>

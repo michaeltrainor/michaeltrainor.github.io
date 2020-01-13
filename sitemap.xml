@@ -3,11 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://www.michaeltrainor.com/categories/</loc>
+    <loc>https://www.michaeltrainor.com/</loc>
+    <lastmod>2019-10-13T23:20:27+13:00</lastmod>
   </url>
   
   <url>
-    <loc>https://www.michaeltrainor.com/</loc>
+    <loc>https://www.michaeltrainor.com/posts/post-001-github-card/</loc>
+    <lastmod>2019-10-13T23:20:27+13:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.michaeltrainor.com/posts/</loc>
+    <lastmod>2019-10-13T23:20:27+13:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.michaeltrainor.com/categories/</loc>
   </url>
   
   <url>
