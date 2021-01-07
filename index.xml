@@ -6,13 +6,9 @@
     <description>Recent content on Michael Trainor</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Oct 2019 23:20:27 +1300</lastBuildDate>
-    
-	<atom:link href="https://www.michaeltrainor.com/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 13 Oct 2019 23:20:27 +1300</lastBuildDate><atom:link href="https://www.michaeltrainor.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>MTNodes Sample Project</title>
+      <title>MTNodes Sample Project (test)</title>
       <link>https://www.michaeltrainor.com/posts/post-001-github-card/</link>
       <pubDate>Sun, 13 Oct 2019 23:20:27 +1300</pubDate>
       

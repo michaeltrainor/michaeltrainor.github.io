@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en-us">
   <head>
-    <title>MTNodes Sample Project // Michael Trainor</title>
+    <title>MTNodes Sample Project (test) // Michael Trainor</title>
     <meta charset="utf-8" />
-    <meta name="generator" content="Hugo 0.62.1" />
+    <meta name="generator" content="Hugo 0.80.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="author" content="Michael Trainor" />
     <meta name="description" content="" />
@@ -11,10 +11,10 @@
 
     
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="MTNodes Sample Project"/>
+<meta name="twitter:title" content="MTNodes Sample Project (test)"/>
 <meta name="twitter:description" content="A basic node graph with some computed examples. Written to try Python 3.7&#43; dataclass objects. Clone it, run it, and enjoy. Thanks!"/>
 
-    <meta property="og:title" content="MTNodes Sample Project" />
+    <meta property="og:title" content="MTNodes Sample Project (test)" />
 <meta property="og:description" content="A basic node graph with some computed examples. Written to try Python 3.7&#43; dataclass objects. Clone it, run it, and enjoy. Thanks!" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://www.michaeltrainor.com/posts/post-001-github-card/" />
@@ -27,7 +27,7 @@
     <header class="app-header">
       <a href="https://www.michaeltrainor.com/"><img class="app-header-avatar" src="/avatar.png" alt="Michael Trainor" /></a>
       <h1>Michael Trainor</h1>
-      <p>Software Engineering, Technical Art and Music Production</p>
+      <p>A Programmer, Technical Artist and Creative Coder</p>
       <div class="app-header-social">
         
           <a target="_blank" href="https://github.com/michaeltrainor" rel="noreferrer noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-github">
@@ -46,7 +46,7 @@
       
   <article class="post">
     <header class="post-header">
-      <h1 class ="post-title">MTNodes Sample Project</h1>
+      <h1 class ="post-title">MTNodes Sample Project (test)</h1>
       <div class="post-meta">
         <div>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
@@ -76,7 +76,7 @@
 <h4 id="purpose">Purpose:</h4>
 <p>The following code sample demonstrates a very basic graph evaluation. Documention is provided where necessary. I only documented the sample where I felt it would help guide you through the process. Any undocumented methods or classes are most certianly basic structures or instance properties.</p>
 <h4 id="structure">Structure:</h4>
-<p>You will find an mtnodes package module (<code>__main__.py</code>) that contains the sample code. I've copied the text below into a doc string for your convinience.</p>
+<p>You will find an mtnodes package module (<code>__main__.py</code>) that contains the sample code. I&rsquo;ve copied the text below into a doc string for your convinience.</p>
 <h4 id="summary">Summary:</h4>
 <p>Three nodes are added to a graph. The operator (an addition node) accepts two parameter nodes. In this case, simple constant values. As the
 output values of the constants are updated, the plugs for those nodes evalate downstream.</p>
@@ -85,30 +85,30 @@ output values of the constants are updated, the plugs for those nodes evalate do
 it may be helpful to pay attention the abstract_plug.py module, if you would like to follow the evaluation process. You would find that the output values
 of the terms are validated via an optional validation method that is implemented in the inherited node object. You can see an example of this in the
 math_constant_node.py.</p>
-<p>Next, the term output values are set. And that's it. The graph evaluted each time a compute plug was notified of the change.</p>
+<p>Next, the term output values are set. And that&rsquo;s it. The graph evaluted each time a compute plug was notified of the change.</p>
 <p>You will see a couple examples printed each time the terms changed.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># internal libraries</span>
 <span style="color:#f92672">from</span> mtnodes.abstract_graph <span style="color:#f92672">import</span> AbstractGraph
 <span style="color:#f92672">from</span> mtnodes.math_add_node <span style="color:#f92672">import</span> MathAddNode
 <span style="color:#f92672">from</span> mtnodes.math_constant_node <span style="color:#f92672">import</span> MathConstantNode
 
-<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;&#34;&#34;</span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">The following code sample demonstrates a very basic graph evaluation</span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">Summary:</span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">Three nodes are added to a graph. The operator (an addition node) accepts two parameter nodes. In this case simple constant values. As the</span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">output values of the constants are updated, the plugs for those nodes evalate downstream.</span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">Details:</span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">First two constant terms and an operator are registered to the graph. Next, the term ouputs are connected to the operator inputs. At this stage</span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">it may be helpful to pay attention the abstract_plug.py module, if you would like to follow the evaluation process. You would find that the output values</span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">of the terms are validated via an optional validation method that is implemented in the inherited node object. You can see an example of this in the</span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">math_constant_node.py.</span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">Next, the term output values are set. And that</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">s it. The graph evaluted each time a compute plug was notified of the change.</span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">You will see a couple examples printed each the terms changed.</span><span style="color:#e6db74">
-</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+<span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">The following code sample demonstrates a very basic graph evaluation
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">Summary:
+</span><span style="color:#e6db74">Three nodes are added to a graph. The operator (an addition node) accepts two parameter nodes. In this case simple constant values. As the
+</span><span style="color:#e6db74">output values of the constants are updated, the plugs for those nodes evalate downstream.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">Details:
+</span><span style="color:#e6db74">First two constant terms and an operator are registered to the graph. Next, the term ouputs are connected to the operator inputs. At this stage
+</span><span style="color:#e6db74">it may be helpful to pay attention the abstract_plug.py module, if you would like to follow the evaluation process. You would find that the output values
+</span><span style="color:#e6db74">of the terms are validated via an optional validation method that is implemented in the inherited node object. You can see an example of this in the
+</span><span style="color:#e6db74">math_constant_node.py.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">Next, the term output values are set. And that&#39;s it. The graph evaluted each time a compute plug was notified of the change.
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">You will see a couple examples printed each the terms changed.
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
 
 graph <span style="color:#f92672">=</span> AbstractGraph()
 
@@ -122,20 +122,20 @@ term1<span style="color:#f92672">.</span>output<span style="color:#f92672">.</sp
 term0<span style="color:#f92672">.</span>output<span style="color:#f92672">.</span>value <span style="color:#f92672">=</span> <span style="color:#ae81ff">5.9</span>
 term1<span style="color:#f92672">.</span>output<span style="color:#f92672">.</span>value <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
 
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Let</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">s add some nnumbers!</span><span style="color:#e6db74">&#34;</span>)
-<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{term0.output.value} + {term1.output.value} = {operator0.output.value}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Let&#39;s add some nnumbers!&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;{term0.output.value} + {term1.output.value} = {operator0.output.value}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
 
 term0<span style="color:#f92672">.</span>output<span style="color:#f92672">.</span>value <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>
 
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">We changed a term...</span><span style="color:#e6db74">&#34;</span>)
-<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{term0.output.value} + {term1.output.value} = {operator0.output.value}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;We changed a term...&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;{term0.output.value} + {term1.output.value} = {operator0.output.value}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
 
 term0<span style="color:#f92672">.</span>output<span style="color:#f92672">.</span>value <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">40</span>
 
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">We changed the term again...</span><span style="color:#e6db74">&#34;</span>)
-<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{term0.output.value} + {term1.output.value} = {operator0.output.value}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;We changed the term again...&#34;</span>)
+<span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;{term0.output.value} + {term1.output.value} = {operator0.output.value}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
 
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Thank you for your time. Please see the README.md</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">in the root folder or follow the documetation above, in this module package</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)</code></pre></div>
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Thank you for your time. Please see the README.md</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">in the root folder or follow the documetation above, in this module package</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)</code></pre></div>
 
     </div>
     <div class="post-footer">
