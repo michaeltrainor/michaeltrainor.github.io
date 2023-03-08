@@ -1,1 +1,1 @@
-# michaeltrainor.io
+[![My Tech Stack](https://github-readme-tech-stack.vercel.app/api/cards?title=tools%20of%20my%20trade&titleAlign=right&fontFamily=Inconsolata&lineCount=1&theme=catppuccin_mocha&line1=python,python,fffb00;rust,rust,ff6a00;docker,docker,0061ff;Qt,Qt,669c35;)](https://github-readme-tech-stack.vercel.app/api/cards?title=tools%20of%20my%20trade&titleAlign=right&fontFamily=Inconsolata&lineCount=1&theme=catppuccin_mocha&line1=python,python,fffb00;rust,rust,ff6a00;docker,docker,0061ff;Qt,Qt,669c35;)
