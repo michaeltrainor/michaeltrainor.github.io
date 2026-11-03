@@ -12,7 +12,7 @@ export default defineConfig({
       provider: fontProviders.fontsource(),
       name: 'JetBrains Mono',
       cssVariable: '--font-jetbrains',
-      weights: ['400', '700'],
+      weights: ['100', '700'],
       styles: ['normal', 'italic'],
       subsets: ['latin'],
       fallbacks: ['monospace'],
