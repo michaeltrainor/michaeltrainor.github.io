@@ -6,7 +6,6 @@ export const SITE = {
   description:
     'Python pipeline development for games and feature film VFX: DCC tools, asset management, and the systems that help studios ship faster.',
   githubUser: 'michaeltrainor',
-  available: true,
 };
 
 export const NAV = [

@@ -48,7 +48,7 @@ const experience = defineCollection({
   loader: orderedYaml('src/data/experience.yaml'),
   schema: z.object({
     role: z.string(),
-    org: z.string(),
+    org: z.string().optional(),
     period: z.string(),
     summary: z.string(),
     order: z.number(),

@@ -14,7 +14,6 @@
   --link: var(--nord10);
   --link-visited: #8a6f8a;
   --heading: var(--nord10);
-  --ok: #6d8a55;
   --code-bg: var(--nord5);
   --max: 860px;
   --font-sans: Verdana, Geneva, Tahoma, 'DejaVu Sans', sans-serif;
@@ -32,7 +31,6 @@
   --link: var(--nord8);
   --link-visited: var(--nord15);
   --heading: var(--nord8);
-  --ok: var(--nord14);
   --code-bg: var(--nord1);
   color-scheme: dark;
 }

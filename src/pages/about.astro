@@ -18,7 +18,7 @@ const experience = await getOrdered('experience');
       </p>
       <p>
         I build scalable systems for digital content creation: DCC tool integration, asset management, and the
-        backend services that keep production pipelines moving. I'm currently open to contract work.
+        backend services that keep production pipelines moving.
       </p>
       <p>Find me on {SOCIALS.map((s, i) => <>{i > 0 && (i === SOCIALS.length - 1 ? ', or ' : ', ')}<a href={s.href} target="_blank" rel="me noopener">{s.label}</a></>)}.</p>
     </div>
@@ -44,7 +44,7 @@ const experience = await getOrdered('experience');
           <tr>
             <td class="mono muted period">{e.data.period}</td>
             <td>
-              <strong>{e.data.role}</strong>, {e.data.org}
+              <strong>{e.data.role}</strong>{e.data.org && <>, {e.data.org}</>}
               <br />
               {e.data.summary}
             </td>
