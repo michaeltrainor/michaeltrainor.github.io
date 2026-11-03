@@ -1,0 +1,10 @@
+# Groups shown on the About page.
+- id: python
+  title: Python
+  items: [Pipeline automation, DCC integration (Maya, Blender, Houdini), Plugin development, Asset management & metadata, Workflow orchestration (Airflow, Jenkins), APIs (FastAPI)]
+- id: infrastructure
+  title: Infrastructure
+  items: [Kubernetes, Memgraph, MongoDB, Kafka, Redis, Backend services for production pipelines]
+- id: learning
+  title: Currently learning
+  items: [C/C++ for performance-critical components, Deeper DCC engine integration, Rust + wgpu, WebGPU]

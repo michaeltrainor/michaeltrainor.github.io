@@ -1,0 +1,56 @@
+---
+import ProjectCard from '../components/ProjectCard.astro';
+import Base from '../layouts/Base.astro';
+import { getProjects } from '../lib/data';
+
+const projects = await getProjects();
+const tags = [...new Set(projects.flatMap((p) => p.data.tags))].sort();
+---
+
+<Base title="Projects" description="Open-source tools, engines, and experiments.">
+  <section class="section container">
+    <p class="eyebrow">Projects</p>
+    <h1>Things I've built</h1>
+    <p class="muted lede">Open-source tools, engines, and experiments. Stars and activity are pulled live from GitHub on every build.</p>
+
+    <div class="filters" role="group" aria-label="Filter by tag">
+      <button type="button" class="chip active" data-filter="">All</button>
+      {tags.map((t) => <button type="button" class="chip" data-filter={t}>{t}</button>)}
+    </div>
+
+    <div class="grid" id="project-grid">{projects.map((p) => <ProjectCard project={p} />)}</div>
+    <p class="muted empty" hidden>No projects with that tag.</p>
+  </section>
+</Base>
+
+<script>
+  // Tag filter. Re-bind on every page load because the router swaps the DOM.
+  document.addEventListener('astro:page-load', () => {
+    const grid = document.getElementById('project-grid');
+    if (!grid) return;
+    const chips = document.querySelectorAll<HTMLButtonElement>('.chip');
+    const empty = document.querySelector<HTMLElement>('.empty')!;
+    chips.forEach((chip) =>
+      chip.addEventListener('click', () => {
+        const f = chip.dataset.filter!;
+        chips.forEach((c) => c.classList.toggle('active', c === chip));
+        let shown = 0;
+        grid.querySelectorAll<HTMLElement>('.project').forEach((card) => {
+          const on = !f || card.dataset.tags!.split('|').includes(f);
+          card.hidden = !on;
+          if (on) shown++;
+        });
+        empty.hidden = shown > 0;
+      }),
+    );
+  });
+</script>
+
+<style>
+  .lede { max-width: 60ch; margin-bottom: 28px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .chip { font: inherit; font-family: var(--font-mono); font-size: 0.78rem; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--border); background: var(--bg-elev); color: var(--text-muted); cursor: pointer; }
+  .chip:hover { color: var(--text); }
+  .chip.active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+  :global(.project[hidden]) { display: none; }
+</style>

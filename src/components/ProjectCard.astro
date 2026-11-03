@@ -1,0 +1,37 @@
+---
+import { timeAgo, type ProjectWithRepo } from '../lib/data';
+
+interface Props { project: ProjectWithRepo }
+
+const { project } = Astro.props;
+const { title, summary, tags, url } = project.data;
+const repo = project.repo;
+const href = url ?? repo?.url;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag class="card project" href={href} target={href && '_blank'} rel={href && 'noopener'} data-tags={tags.join('|')}>
+  <div class="top">
+    <h3 class="mono">{title}</h3>
+    {href && <span class="arrow" aria-hidden="true">↗</span>}
+  </div>
+  <p class="muted">{summary}</p>
+  <ul class="tags">{tags.map((t) => <li class="tag">{t}</li>)}</ul>
+  {repo && (
+    <div class="meta mono">
+      {repo.language && <span><i class="dot" />{repo.language}</span>}
+      <span>★ {repo.stars}</span>
+      <span>pushed {timeAgo(repo.pushedAt)}</span>
+    </div>
+  )}
+</Tag>
+
+<style>
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  h3 { margin: 0; }
+  p { margin: 0; flex: 1; font-size: 0.95rem; }
+  .arrow { color: var(--text-muted); transition: transform 0.18s ease, color 0.18s ease; }
+  .project:hover .arrow { color: var(--accent); transform: translate(2px, -2px); }
+  .meta { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.75rem; color: var(--text-muted); padding-top: 10px; border-top: 1px dashed var(--border); }
+  .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 6px; }
+</style>

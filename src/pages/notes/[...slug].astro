@@ -1,0 +1,37 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { fmtDate, getNotes } from '../../lib/data';
+
+export async function getStaticPaths() {
+  const notes = await getNotes();
+  return notes.map((note) => ({ params: { slug: note.id }, props: note }));
+}
+
+type Props = CollectionEntry<'notes'>;
+const note = Astro.props;
+const { Content } = await render(note);
+const { title, description, pubDate, updatedDate, tags } = note.data;
+---
+
+<Base title={title} description={description}>
+  <article class="section container">
+    <a href="/notes/" class="back mono">← Notes</a>
+    <header>
+      <h1 transition:name={`note-${note.id}`}>{title}</h1>
+      <p class="muted mono meta">
+        <time datetime={pubDate.toISOString()}>{fmtDate(pubDate)}</time>
+        {updatedDate && <> · updated {fmtDate(updatedDate)}</>}
+      </p>
+      {tags.length > 0 && <ul class="tags">{tags.map((t) => <li class="tag">{t}</li>)}</ul>}
+    </header>
+    <div class="prose"><Content /></div>
+  </article>
+</Base>
+
+<style>
+  .back { display: inline-block; font-size: 0.85rem; margin-bottom: 24px; }
+  header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+  h1 { font-size: clamp(2rem, 3vw + 1rem, 3rem); }
+  .meta { font-size: 0.85rem; }
+</style>

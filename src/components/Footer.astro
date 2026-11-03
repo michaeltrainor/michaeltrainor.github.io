@@ -1,0 +1,24 @@
+---
+import { SITE, SOCIALS } from '../consts';
+
+const built = new Date();
+---
+
+<footer class="site-footer">
+  <div class="container row">
+    <p class="muted">© {built.getFullYear()} {SITE.title}</p>
+    <ul>
+      {SOCIALS.map((s) => <li><a href={s.href} rel="me noopener" target="_blank">{s.label}</a></li>)}
+      <li><a href="/rss.xml">RSS</a></li>
+    </ul>
+    <p class="muted mono updated">Built {built.toISOString().slice(0, 10)}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer { border-top: 1px solid var(--border); padding: 28px 0; font-size: 0.9rem; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; }
+  p { margin: 0; }
+  ul { display: flex; gap: 16px; list-style: none; margin: 0; padding: 0; }
+  .updated { font-size: 0.78rem; }
+</style>
