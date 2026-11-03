@@ -1,0 +1,16 @@
+---
+import NoteList from '../../components/NoteList.astro';
+import Base from '../../layouts/Base.astro';
+import { getNotes } from '../../lib/data';
+
+const notes = await getNotes();
+---
+
+<Base title="Notes" description="Writing on pipelines, tools, and rendering.">
+  <section class="section container">
+    <p class="eyebrow">notes</p>
+    <h1>Notes</h1>
+    <p class="muted">Writing on pipelines, tools, rendering, and whatever I'm learning. Subscribe via <a href="/rss.xml">RSS</a>.</p>
+    <NoteList notes={notes} />
+  </section>
+</Base>

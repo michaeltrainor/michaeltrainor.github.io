@@ -1,0 +1,43 @@
+# Hand-picked projects, in display order.
+#   repo:     "owner/name" of a public GitHub repo; stars, language, and last push come from live data.
+#   url:      optional link that overrides the repo link.
+#   featured: show on the home page.
+#   hidden:   keep it off the site (used for projects whose repos are still private).
+- id: empty-maya
+  title: mtmaya
+  summary: Library and CLI for Autodesk Maya tools focused on game development, with Qt-wrapped Maya UI, menus, and shelves.
+  repo: michaeltrainor/empty-maya
+  tags: [Python, Maya, Qt, CLI]
+  featured: true
+- id: empty-web-render
+  title: empty-web-render
+  summary: A Three.js WebGPU renderer kernel with examples, built to be small and inspectable.
+  repo: michaeltrainor/empty-web-render
+  tags: [JavaScript, WebGPU, Three.js]
+  featured: true
+  hidden: true
+- id: empty-engine
+  title: empty-engine
+  summary: A personal ground-up learning engine in Rust, built on winit and wgpu one system at a time.
+  repo: michaeltrainor/empty-engine
+  tags: [Rust, wgpu, Engine]
+  featured: true
+  hidden: true
+- id: empty-qt
+  title: mtqt
+  summary: Reusable PySide6 widgets, item models, and QSS for production Qt tools, following the VFX Reference Platform.
+  repo: michaeltrainor/empty-qt
+  tags: [Python, Qt, PySide6]
+  featured: true
+- id: codex-tools
+  title: codex-tools
+  summary: Personal Codex tools and an MCP-aware launcher.
+  repo: michaeltrainor/codex-tools
+  tags: [Python, AI, MCP]
+  hidden: true
+- id: woke
+  title: woke
+  summary: A macOS menu bar app that keeps a MacBook Pro from idle sleep.
+  repo: michaeltrainor/woke
+  tags: [Swift, macOS]
+  hidden: true

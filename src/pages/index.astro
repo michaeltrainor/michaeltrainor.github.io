@@ -1,0 +1,78 @@
+---
+import NoteList from '../components/NoteList.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { SITE } from '../consts';
+import Base from '../layouts/Base.astro';
+import { getNotes, getProjects, getRecentRepos, isoDate } from '../lib/data';
+
+const featured = (await getProjects()).filter((p) => p.data.featured);
+const notes = (await getNotes()).slice(0, 5);
+const activity = await getRecentRepos(5);
+---
+
+<Base>
+  <div class="container layout">
+    <div class="main">
+      <section class="section intro">
+        <h1>{SITE.title}</h1>
+        <p class="mono muted role">{SITE.role}</p>
+        <p>
+          Python developer and 3D pipeline specialist with a background in games and feature film VFX
+          (technical artist, animation TD). I build pipelines, DCC tools, and asset systems that help studios ship faster.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <h2>Projects</h2>
+          <a href="/projects/">all projects &raquo;</a>
+        </div>
+        <div class="grid projects">{featured.map((p) => <ProjectCard project={p} />)}</div>
+      </section>
+    </div>
+
+    <aside class="sidebar">
+      <section class="section">
+        <div class="section-head">
+          <h2>Notes</h2>
+          <a href="/notes/">all &raquo;</a>
+        </div>
+        <NoteList notes={notes} compact />
+      </section>
+
+      <section class="section">
+        <div class="section-head"><h2>Recent pushes</h2></div>
+        {activity.length === 0 ? (
+          <p class="muted">GitHub activity is unavailable right now.</p>
+        ) : (
+          <table class="activity mono">
+            <tbody>
+              {activity.map((r) => (
+                <tr>
+                  <td><a href={r.url} target="_blank" rel="noopener">{r.name}</a></td>
+                  <td class="muted">{isoDate(r.pushedAt)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </section>
+    </aside>
+  </div>
+</Base>
+
+<style>
+  .layout { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 40px; }
+  .intro { padding-top: 32px; }
+  .intro h1 { margin-bottom: 0; }
+  .role { margin-bottom: 1.2em; }
+  .sidebar { padding-top: 8px; font-size: 0.92rem; }
+  .sidebar .section { padding-block: 24px 0; }
+  .activity { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .activity td { padding: 3px 0; border-bottom: 1px dotted var(--border); }
+  .activity td:last-child { text-align: right; }
+  @media (max-width: 720px) {
+    .layout { grid-template-columns: 1fr; gap: 0; }
+    .sidebar { padding-top: 0; }
+  }
+</style>

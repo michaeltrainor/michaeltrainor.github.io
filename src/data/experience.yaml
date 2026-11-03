@@ -1,0 +1,10 @@
+# Career timeline for the About page, newest first. Fill in companies and dates.
+- id: now
+  role: Principal Pipeline & Tools Technical Artist
+  period: Now
+  summary: Python development for 3D content pipelines and production workflows.
+- id: background
+  role: Technical Artist / Animation TD
+  org: Games and feature film VFX
+  period: Earlier
+  summary: Built DCC tools, rigs, and pipeline glue for game and film productions.

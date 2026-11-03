@@ -1,0 +1,63 @@
+---
+import { SITE, SOCIALS } from '../consts';
+import Base from '../layouts/Base.astro';
+import { getOrdered } from '../lib/data';
+
+const skills = await getOrdered('skills');
+const experience = await getOrdered('experience');
+---
+
+<Base title="About" description={`About ${SITE.title}.`}>
+  <section class="section container">
+    <p class="eyebrow">about</p>
+    <h1>About</h1>
+    <div class="prose lede">
+      <p>
+        I'm a Python developer and 3D pipeline specialist with a background as a technical artist and animation TD
+        in games and feature film VFX.
+      </p>
+      <p>
+        I build scalable systems for digital content creation: DCC tool integration, asset management, and the
+        backend services that keep production pipelines moving.
+      </p>
+      <p>Find me on {SOCIALS.map((s, i) => <>{i > 0 && (i === SOCIALS.length - 1 ? ', or ' : ', ')}<a href={s.href} target="_blank" rel="me noopener">{s.label}</a></>)}.</p>
+    </div>
+  </section>
+
+  <section class="section container">
+    <h2>Toolbox</h2>
+    <div class="grid">
+      {skills.map((g) => (
+        <div class="card">
+          <h3>{g.data.title}</h3>
+          <ul class="tags">{g.data.items.map((i) => <li class="tag">{i}</li>)}</ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section container">
+    <h2>Experience</h2>
+    <table class="xp">
+      <tbody>
+        {experience.map((e) => (
+          <tr>
+            <td class="mono muted period">{e.data.period}</td>
+            <td>
+              <strong>{e.data.role}</strong>{e.data.org && <>, {e.data.org}</>}
+              <br />
+              {e.data.summary}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+</Base>
+
+<style>
+  .card h3 { margin: 0; }
+  .xp { border-collapse: collapse; width: 100%; max-width: 72ch; }
+  .xp td { padding: 6px 12px 6px 0; vertical-align: top; border-bottom: 1px dotted var(--border); }
+  .period { white-space: nowrap; width: 6rem; }
+</style>

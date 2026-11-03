@@ -1,0 +1,51 @@
+---
+import { isoDate, type ProjectWithRepo } from '../lib/data';
+
+interface Props { project: ProjectWithRepo }
+
+const { project } = Astro.props;
+const { title, summary, tags, url } = project.data;
+const repo = project.repo;
+const href = url ?? repo?.url;
+
+// Every card shows the same facts in the same order; missing values read as "n/a".
+const facts = [
+  ['lang', repo?.language ?? 'n/a'],
+  ['stars', repo ? String(repo.stars) : 'n/a'],
+  ['updated', repo ? isoDate(repo.pushedAt) : 'n/a'],
+];
+---
+
+<article class="card project" data-tags={tags.join('|')}>
+  <h3 class="mono">{href ? <a href={href} target="_blank" rel="noopener">{title}</a> : title}</h3>
+  <p class="summary">{summary}</p>
+  <ul class="tags">{tags.map((t) => <li class="tag">{t.toLowerCase()}</li>)}</ul>
+  <dl class="facts mono">
+    {facts.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+  </dl>
+</article>
+
+<style>
+  /* Four rows (title, summary, tags, facts) shared with sibling cards via subgrid, so they line up. */
+  .project {
+    display: grid;
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+    row-gap: 8px;
+    align-content: start;
+  }
+  h3 { margin: 0; }
+  .summary { margin: 0; }
+  .tags { align-self: start; }
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin: 0;
+    padding-top: 8px;
+    border-top: 1px dotted var(--border);
+    font-size: 0.78rem;
+  }
+  dt { color: var(--text-muted); }
+  dd { margin: 0; }
+</style>

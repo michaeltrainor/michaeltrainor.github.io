@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { isoDate } from '../lib/data';
+
+interface Props {
+  notes: CollectionEntry<'notes'>[];
+  /** Stack date above title, for narrow columns. */
+  compact?: boolean;
+}
+
+const { notes, compact = false } = Astro.props;
+---
+
+{notes.length === 0 ? (
+  <p class="muted">No notes yet.</p>
+) : (
+  <ul class:list={["notes", { compact }]}>
+    {notes.map((n) => (
+      <li>
+        <time class="mono muted" datetime={n.data.pubDate.toISOString()}>{isoDate(n.data.pubDate)}</time>
+        <div>
+          <a href={`/notes/${n.id}/`}>{n.data.title}</a>
+          <span class="muted"> &ndash; {n.data.description}</span>
+        </div>
+      </li>
+    ))}
+  </ul>
+)}
+
+<style>
+  .notes { list-style: none; margin: 0; padding: 0; }
+  li { display: grid; grid-template-columns: 6.5rem 1fr; gap: 12px; padding: 4px 0; }
+  time { font-size: 0.85rem; }
+  .compact li { grid-template-columns: 1fr; gap: 0; padding: 6px 0; }
+  @media (max-width: 520px) { li { grid-template-columns: 1fr; gap: 0; padding: 6px 0; } }
+</style>
