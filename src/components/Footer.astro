@@ -5,20 +5,21 @@ const built = new Date();
 ---
 
 <footer class="site-footer">
-  <div class="container row">
-    <p class="muted">© {built.getFullYear()} {SITE.title}</p>
-    <ul>
-      {SOCIALS.map((s) => <li><a href={s.href} rel="me noopener" target="_blank">{s.label}</a></li>)}
-      <li><a href="/rss.xml">RSS</a></li>
-    </ul>
-    <p class="muted mono updated">Built {built.toISOString().slice(0, 10)}</p>
+  <div class="container">
+    <hr />
+    <p>
+      {SOCIALS.map((s) => <><a href={s.href} rel="me noopener" target="_blank">{s.label.toLowerCase()}</a> | </>)}
+      <a href="/rss.xml">rss</a>
+    </p>
+    <p class="muted">
+      © {built.getFullYear()} {SITE.title}. Last built {built.toISOString().slice(0, 10)}.
+      Built with <a href="https://astro.build">Astro</a>, colors by <a href="https://www.nordtheme.com/">Nord</a>.
+    </p>
   </div>
 </footer>
 
 <style>
-  .site-footer { border-top: 1px solid var(--border); padding: 28px 0; font-size: 0.9rem; }
-  .row { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; justify-content: space-between; }
-  p { margin: 0; }
-  ul { display: flex; gap: 16px; list-style: none; margin: 0; padding: 0; }
-  .updated { font-size: 0.78rem; }
+  .site-footer { padding: 8px 0 24px; font-family: var(--font-mono); font-size: 0.8rem; }
+  hr { border: 0; border-top: 1px solid var(--border); margin: 0 0 12px; }
+  p { margin: 0 0 4px; }
 </style>

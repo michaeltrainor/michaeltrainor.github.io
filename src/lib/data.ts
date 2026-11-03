@@ -1,12 +1,20 @@
 import { getCollection, getEntry, type CollectionEntry } from 'astro:content';
 
+type Ordered = 'projects' | 'skills' | 'experience';
+
+/** Entries of a YAML-backed collection in the order they appear in the file. */
+export async function getOrdered<C extends Ordered>(collection: C) {
+  const entries = (await getCollection(collection)) as CollectionEntry<C>[];
+  return entries.sort((a, b) => a.data.order - b.data.order);
+}
+
 export type ProjectWithRepo = CollectionEntry<'projects'> & {
   repo?: CollectionEntry<'repos'>['data'];
 };
 
 /** Visible curated projects in file order, each joined to its live GitHub repo if it is public. */
 export async function getProjects(): Promise<ProjectWithRepo[]> {
-  const projects = await getCollection('projects', ({ data }) => !data.hidden);
+  const projects = (await getOrdered('projects')).filter((p) => !p.data.hidden);
   return Promise.all(
     projects.map(async (p) => ({
       ...p,
@@ -46,5 +54,5 @@ export function timeAgo(date: Date, now = new Date()) {
   return 'just now';
 }
 
-export const fmtDate = (d: Date) =>
-  d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+/** YYYY-MM-DD. */
+export const isoDate = (d: Date) => d.toISOString().slice(0, 10);

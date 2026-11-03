@@ -1,7 +1,7 @@
 ---
 import { render, type CollectionEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import { fmtDate, getNotes } from '../../lib/data';
+import { getNotes, isoDate } from '../../lib/data';
 
 export async function getStaticPaths() {
   const notes = await getNotes();
@@ -16,22 +16,23 @@ const { title, description, pubDate, updatedDate, tags } = note.data;
 
 <Base title={title} description={description}>
   <article class="section container">
-    <a href="/notes/" class="back mono">← Notes</a>
+    <p class="eyebrow">notes/{note.id}</p>
     <header>
-      <h1 transition:name={`note-${note.id}`}>{title}</h1>
+      <h1>{title}</h1>
       <p class="muted mono meta">
-        <time datetime={pubDate.toISOString()}>{fmtDate(pubDate)}</time>
-        {updatedDate && <> · updated {fmtDate(updatedDate)}</>}
+        <time datetime={pubDate.toISOString()}>{isoDate(pubDate)}</time>
+        {updatedDate && <> · updated {isoDate(updatedDate)}</>}
       </p>
       {tags.length > 0 && <ul class="tags">{tags.map((t) => <li class="tag">{t}</li>)}</ul>}
     </header>
     <div class="prose"><Content /></div>
+    <p class="mono back"><a href="/notes/">&laquo; back to notes</a></p>
   </article>
 </Base>
 
 <style>
-  .back { display: inline-block; font-size: 0.85rem; margin-bottom: 24px; }
-  header { margin-bottom: 40px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
-  h1 { font-size: clamp(2rem, 3vw + 1rem, 3rem); }
-  .meta { font-size: 0.85rem; }
+  header { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px dashed var(--border); }
+  h1 { margin-bottom: 0.2em; }
+  .meta { font-size: 0.85rem; margin-bottom: 4px; }
+  .back { margin-top: 24px; font-size: 0.85rem; }
 </style>

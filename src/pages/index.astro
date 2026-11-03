@@ -1,33 +1,30 @@
 ---
 import NoteList from '../components/NoteList.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { SITE, SOCIALS } from '../consts';
+import { SITE } from '../consts';
 import Base from '../layouts/Base.astro';
-import { getNotes, getProjects, getRecentRepos, timeAgo } from '../lib/data';
+import { getNotes, getProjects, getRecentRepos, isoDate } from '../lib/data';
 
 const featured = (await getProjects()).filter((p) => p.data.featured);
-const notes = (await getNotes()).slice(0, 3);
+const notes = (await getNotes()).slice(0, 5);
 const activity = await getRecentRepos(5);
 ---
 
 <Base>
-  <section class="hero container">
-    {SITE.available && <p class="status mono"><span class="pulse" /> Open to contracts</p>}
-    <h1>Pipelines and tools<br /><span class="accent">for people who make pictures.</span></h1>
-    <p class="lede muted">
-      I'm {SITE.title}, a {SITE.role.toLowerCase()} with a background in games and feature film VFX.
-      I build Python pipelines, DCC tools, and asset systems that help studios ship faster.
+  <section class="section container intro">
+    <h1>{SITE.title}</h1>
+    <p class="mono muted role">{SITE.role}</p>
+    <p>
+      Python developer and 3D pipeline specialist with a background in games and feature film VFX
+      (technical artist, animation TD). I build pipelines, DCC tools, and asset systems that help studios ship faster.
     </p>
-    <div class="cta">
-      <a class="btn primary" href="/projects/">See projects</a>
-      {SOCIALS.slice(0, 2).map((s) => <a class="btn" href={s.href} target="_blank" rel="me noopener">{s.label}</a>)}
-    </div>
+    {SITE.available && <p class="mono status">status: <span class="ok">available for contract work</span></p>}
   </section>
 
   <section class="section container">
     <div class="section-head">
-      <h2>Featured projects</h2>
-      <a href="/projects/">All projects →</a>
+      <h2>Projects</h2>
+      <a href="/projects/">all projects &raquo;</a>
     </div>
     <div class="grid">{featured.map((p) => <ProjectCard project={p} />)}</div>
   </section>
@@ -35,37 +32,40 @@ const activity = await getRecentRepos(5);
   <section class="section container split">
     <div>
       <div class="section-head">
-        <h2>Latest notes</h2>
-        <a href="/notes/">All notes →</a>
+        <h2>Notes</h2>
+        <a href="/notes/">all notes &raquo;</a>
       </div>
       <NoteList notes={notes} />
     </div>
-    <aside>
-      <div class="section-head"><h2>Recently pushed</h2></div>
-      <ul class="activity card">
-        {activity.length === 0 && <li class="muted">GitHub activity is unavailable right now.</li>}
-        {activity.map((r) => (
-          <li>
-            <a class="mono" href={r.url} target="_blank" rel="noopener">{r.name}</a>
-            <span class="muted mono">{timeAgo(r.pushedAt)}</span>
-          </li>
-        ))}
-      </ul>
-    </aside>
+    <div>
+      <div class="section-head"><h2>Recent pushes</h2></div>
+      {activity.length === 0 ? (
+        <p class="muted">GitHub activity is unavailable right now.</p>
+      ) : (
+        <table class="activity mono">
+          <tbody>
+            {activity.map((r) => (
+              <tr>
+                <td><a href={r.url} target="_blank" rel="noopener">{r.name}</a></td>
+                <td class="muted">{isoDate(r.pushedAt)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
   </section>
 </Base>
 
 <style>
-  .hero { padding-top: clamp(56px, 12vw, 140px); padding-bottom: clamp(24px, 4vw, 48px); }
-  .accent { color: var(--accent); }
-  .lede { font-size: clamp(1.05rem, 0.6vw + 0.95rem, 1.25rem); max-width: 60ch; margin: 1.25em 0 2em; }
-  .cta { display: flex; flex-wrap: wrap; gap: 10px; }
-  .status { display: inline-flex; align-items: center; gap: 10px; font-size: 0.8rem; color: var(--text-muted); border: 1px solid var(--border); background: var(--bg-elev); padding: 4px 12px; border-radius: 999px; }
-  .pulse { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6); animation: pulse 2s infinite; }
-  @keyframes pulse { 70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
-  .split { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; }
-  .activity { list-style: none; margin: 0; gap: 0; padding: 8px 20px; }
-  .activity li { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
-  .activity li:last-child { border-bottom: 0; }
-  @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
+  .intro { padding-top: 32px; }
+  .intro h1 { margin-bottom: 0; }
+  .role { margin-bottom: 1.2em; }
+  .intro p { max-width: 72ch; }
+  .ok { color: var(--ok); }
+  .split { display: grid; grid-template-columns: 3fr 2fr; gap: 32px; }
+  .activity { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .activity td { padding: 3px 0; border-bottom: 1px dotted var(--border); }
+  .activity td:last-child { text-align: right; }
+  @media (max-width: 720px) { .split { grid-template-columns: 1fr; gap: 0; } }
 </style>
