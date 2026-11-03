@@ -27,7 +27,7 @@ const activity = await getRecentRepos(5);
           <h2>Projects</h2>
           <a href="/projects/">all projects &raquo;</a>
         </div>
-        <div class="grid">{featured.map((p) => <ProjectCard project={p} />)}</div>
+        <div class="grid projects">{featured.map((p) => <ProjectCard project={p} />)}</div>
       </section>
     </div>
 

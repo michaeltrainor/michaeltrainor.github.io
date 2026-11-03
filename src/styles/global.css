@@ -81,6 +81,8 @@ pre code { border: 0; padding: 0; }
 .section-head a { font-family: var(--font-mono); font-size: 0.85rem; }
 
 .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
+/* Project cards span four subgrid rows each; leave more room between cards than inside them. */
+.grid.projects { row-gap: 20px; }
 
 .card {
   display: flex;
