@@ -16,8 +16,8 @@
   --heading: var(--nord10);
   --code-bg: var(--nord5);
   --max: 860px;
-  --font-sans: Verdana, Geneva, Tahoma, 'DejaVu Sans', sans-serif;
-  --font-mono: 'DejaVu Sans Mono', Menlo, Monaco, Consolas, 'Courier New', monospace;
+  --font-sans: var(--font-jetbrains), monospace;
+  --font-mono: var(--font-jetbrains), monospace;
   color-scheme: light;
 }
 
@@ -88,6 +88,7 @@ pre code { border: 0; padding: 0; }
   padding: 10px 12px;
   background: var(--bg-alt);
   border: 1px solid var(--border);
+  border-radius: 6px;
   color: inherit;
 }
 
