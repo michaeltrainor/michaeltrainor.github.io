@@ -25,11 +25,10 @@
   hidden: true
 - id: empty-qt
   title: mtqt
-  summary: A PySide6 widget library for building DCC tool UIs that feel consistent across apps.
+  summary: Reusable PySide6 widgets, item models, and QSS for production Qt tools, following the VFX Reference Platform.
   repo: michaeltrainor/empty-qt
   tags: [Python, Qt, PySide6]
   featured: true
-  hidden: true
 - id: codex-tools
   title: codex-tools
   summary: Personal Codex tools and an MCP-aware launcher.
